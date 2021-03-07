@@ -1,0 +1,22 @@
+<form [formGroup]="formreactive">
+  <button type="button" (click)="refresh()">refresh</button>
+  <input type="text" formControlName="name"/>
+  <input type="text" formControlName="age"/>
+  <input type="text" formControlName="phone"/>
+  <ul formArrayName="emails">
+    <li *ngFor="let email of emails.controls; let i = index">
+      {{i}}
+      <div [formGroupName]="i">
+        <input type="email" formControlName="mail">
+        <input type="text" formControlName="type">
+      <button type="button" (click)="insert(i)">add</button>
+      <button type="button" (click)="remoute(i)">remoute</button>
+      </div>
+
+    </li>
+  </ul>
+
+</form>
+
+<code>{{formreactive.value | json}}</code>
+
